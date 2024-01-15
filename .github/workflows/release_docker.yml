@@ -1,8 +1,7 @@
 name: release_docker
 
 on:
-  release:
-    types: [ published ]
+  workflow_dispatch:
 
 jobs:
   release_docker:
@@ -36,12 +35,7 @@ jobs:
           context: .
           file: Dockerfile
           platforms: |
-            linux/386
             linux/amd64
-            linux/arm64/v8
-            linux/arm/v7
-            linux/arm/v6
-            linux/s390x
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
